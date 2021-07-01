@@ -1,44 +1,24 @@
-# テーブル設計
+# README
 
-## users テーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-|Column|Type|Options|
-|nickname|string|null: false|
-|encrypted_password|string|null: false|
-|birthday|date|null: false|
-|email|string|null: false|
-|first_name|string|null: false|
-|last_name|string|null: false|
-|first_nameカナ|string|null: false|
-|last_nameカナ|string|null: false|
+Things you may want to cover:
 
+* Ruby version
 
-## items テーブル
+* System dependencies
 
-|Column|Type|Options|
-|items_name|string|null: false|
-|category_id|integer|null: false|
-|price|string|null: false|
-|user_id|references|-------|
-|status_id|integer|null: false|
-|delivery_charge_id|integer|null: false|
-|place|string|null: false|
-|days_id|integer|null: false|
-|description|text|null: false|
+* Configuration
 
-## purchase テーブル
+* Database creation
 
-|Column|Type|Options|
-|user_id|references|-------|
-|items_id|references|-------|
+* Database initialization
 
-## shipping address テーブル
+* How to run the test suite
 
-|Column|Type|Options|
-|purchase_id|references|-------|
-|postal_code|string|null: false|
-|prefectures|integer|null: false|
-|municipality|string|null: false|
-|house_number|string|null: false|
-|building_name|string|-------|
-|phone_number|string|null: false|
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
