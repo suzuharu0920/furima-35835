@@ -24,7 +24,7 @@
 |user|references|foreign_key: true|
 |status_id|integer|null: false|
 |delivery_charge_id|integer|null: false|
-|place_id|integer|null: false|
+|prefectures_id|integer|null: false|
 |days_id|integer|null: false|
 |description|text|null: false|
 
@@ -33,7 +33,7 @@
 |Column|Type|Options|
 |--------|-----|--------|
 |user|references|foreign_key: true|
-|items_id|references|foreign_key: true|
+|item|references|foreign_key: true|
 
 ## shipping address テーブル
 
