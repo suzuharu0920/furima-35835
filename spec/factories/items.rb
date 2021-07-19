@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :item do
     association :user
-    items_name                 { "商品名（必須 40文字まで)" }
-    description                { "商品の詳細(必須 1000文字まで)" }
+    items_name                 { '商品名（必須 40文字まで)' }
+    description                { '商品の詳細(必須 1000文字まで)' }
     category_id                { 2 }
     status_id                  { 2 }
     delivery_charge_id         { 2 }

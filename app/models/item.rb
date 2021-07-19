@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   # has_one :purchase
-  with_options presence: true, numericality: { other_than: 1 , message: "can't be blank"} do
+  with_options presence: true, numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
     validates :delivery_charge_id
     validates :status_id
@@ -20,5 +20,6 @@ class Item < ApplicationRecord
     validates :items_name
     validates :image
   end
-  validates :price, format: { with: /\A[0-9]+\z/}, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range"}
+  validates :price, format: { with: /\A[0-9]+\z/ },
+                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
 end
