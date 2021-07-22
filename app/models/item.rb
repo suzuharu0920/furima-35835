@@ -7,7 +7,8 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :user
   has_one_attached :image
-  # has_one :purchase
+  has_one :purchase
+
   with_options presence: true, numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
     validates :delivery_charge_id
