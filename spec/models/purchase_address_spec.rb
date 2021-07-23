@@ -64,7 +64,17 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberは英数混合では登録できないこと' do
         @purchase_address.phone_number = 'abcde123456'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include "Phone number is too short"
+        expect(@purchase_address.errors.full_messages).to include 'Phone number is too short'
+      end
+      it 'user_idが空では購入できないこと' do
+        @purchase_address.user_id = ''
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include "User can't be blank"
+      end
+      it 'item_idが空では購入できないこと' do
+        @purchase_address.item_id = ''
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include "Item can't be blank"
       end
     end
   end
