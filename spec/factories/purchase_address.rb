@@ -6,5 +6,6 @@ FactoryBot.define do
     house_number                   { '2-5-2' }
     municipality                   { '足立区' }
     token                          { '0000000000000000' }
+    building_name                  { 'テストマンション' }
   end
 end

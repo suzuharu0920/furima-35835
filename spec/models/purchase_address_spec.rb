@@ -1,11 +1,17 @@
 require 'rails_helper'
 RSpec.describe PurchaseAddress, type: :model do
   before do
-    @purchase_address = FactoryBot.build(:purchase_address)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @purchase_address = FactoryBot.build(:purchase_address, user_id: @user.id, item_id: @item.id)
   end
   describe '商品購入機能' do
     context '商品購入ができるとき' do
       it '各必須項目が正しく入力されていれば登録できる' do
+        expect(@purchase_address).to be_valid
+      end
+      it '建物名が空でも登録できる' do
+        @purchase_address.building_name = ''
         expect(@purchase_address).to be_valid
       end
     end
@@ -54,6 +60,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.postal_code = '１２３−１２３４'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include 'Postal code is invalid. Include hyphen(-)'
+      end
+      it 'phone_numberは英数混合では登録できないこと' do
+        @purchase_address.phone_number = 'abcde123456'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include "Phone number is too short"
       end
     end
   end
