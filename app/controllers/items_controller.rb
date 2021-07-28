@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :redirect_to_index, only: [:edit, :update, :destroy]
   def index
-    @items = Item.includes(:user).order('created_at ASC')
+    @items = Item.includes(:user).order('created_at DESC')
   end
 
   def new
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path if current_user == @item.user || @item.purchase.present?
+    redirect_to root_path if @item.purchase.present?
   end
 
   def update
