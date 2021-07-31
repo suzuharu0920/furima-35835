@@ -10,75 +10,75 @@ RSpec.describe Item, type: :model do
       end
     end
     context '商品登録ができない時' do
-      it 'imageが空だと登録できない' do
+      it '画像が空だと登録できない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "Image can't be blank"
+        expect(@item.errors.full_messages).to include "画像を入力してください"
       end
-      it 'item_nameが空だと登録できない' do
+      it '商品名が空だと登録できない' do
         @item.items_name = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include "Items name can't be blank"
+        expect(@item.errors.full_messages).to include "商品名を入力してください"
       end
-      it 'categoryが選択されていないと登録できない' do
+      it 'カテゴリーが選択されていないと登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category can't be blank"
+        expect(@item.errors.full_messages).to include "カテゴリーを選択してください"
       end
-      it 'statusが選択されていないと登録できない' do
+      it '商品の状態が選択されていないと登録できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Status can't be blank"
+        expect(@item.errors.full_messages).to include "商品の状態を選択してください"
       end
-      it 'delivery_chargeが選択されていないと登録できない' do
+      it '配送料の負担が選択されていないと登録できない' do
         @item.delivery_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Delivery charge can't be blank"
+        expect(@item.errors.full_messages).to include "配送料の負担を選択してください"
       end
-      it 'prefectureが選択されていないと登録できない' do
+      it '発送元の地域が選択されていないと登録できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Prefecture can't be blank"
+        expect(@item.errors.full_messages).to include "発送元の地域を選択してください"
       end
-      it 'daysが選択されていないと登録できない' do
+      it '発送までの日数が選択されていないと登録できない' do
         @item.days_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include "Days can't be blank"
+        expect(@item.errors.full_messages).to include "発送までの日数を選択してください"
       end
-      it 'priceが空白だと登録できない' do
+      it '価格が空白だと登録できない' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price is out of setting range'
+        expect(@item.errors.full_messages).to include '価格は300円〜9999999円(半角数字)で入力してください'
       end
-      it 'priceは全角文字では登録できない' do
+      it '価格は全角文字では登録できない' do
         @item.price = 'あいう１２３'
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price is out of setting range'
+        expect(@item.errors.full_messages).to include '価格は300円〜9999999円(半角数字)で入力してください'
       end
-      it 'priceは半角英数混合では登録できない' do
+      it '価格は半角英数混合では登録できない' do
         @item.price = 'abc123'
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price is out of setting range'
+        expect(@item.errors.full_messages).to include '価格は300円〜9999999円(半角数字)で入力してください'
       end
-      it 'priceは半角英語だけでは登録できない' do
+      it '価格は半角英語だけでは登録できない' do
         @item.price = 'aaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price is out of setting range'
+        expect(@item.errors.full_messages).to include '価格は300円〜9999999円(半角数字)で入力してください'
       end
-      it 'priceは299円以下では登録できないこと' do
+      it '価格は299円以下では登録できないこと' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price is out of setting range'
+        expect(@item.errors.full_messages).to include '価格は300円〜9999999円(半角数字)で入力してください'
       end
-      it 'priceは10,000,000以上では登録できない' do
+      it '価格は10,000,000以上では登録できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include 'Price is out of setting range'
+        expect(@item.errors.full_messages).to include '価格は300円〜9999999円(半角数字)で入力してください'
       end
       it 'userが紐付いていないと保存できないこと' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include('User must exist')
+        expect(@item.errors.full_messages).to include('Userを入力してください')
       end
     end
   end

@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_one_attached :image
   has_one :purchase
 
-  with_options presence: true, numericality: { other_than: 1, message: "can't be blank" } do
+  with_options presence: true, numericality: { other_than: 1, message: "を選択してください" } do
     validates :category_id
     validates :delivery_charge_id
     validates :status_id
@@ -22,5 +22,5 @@ class Item < ApplicationRecord
     validates :image
   end
   validates :price, format: { with: /\A[0-9]+\z/ },
-                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is out of setting range' }
+                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は300円〜9999999円(半角数字)で入力してください' }
 end

@@ -4,14 +4,14 @@ class PurchaseAddress
                 :municipality, :building_name
 
   with_options presence: true do
-    validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :prefecture_id, numericality: { other_than: 1, message: "を選択してください" }
     validates :token
     validates :user_id
     validates :item_id
     validates :house_number
-    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'is too short' }
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'は10〜11字の半角数字で入力してください' }
     validates :municipality
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'はハイフンを含む半角数字で入力してください' }
   end
 
   def save
